@@ -30,5 +30,5 @@ Instead of processing every submission blindly,  a Filter node was introduced to
 1. Lead qualification systems
 2. Customer support triaging
 3. Job application filtering
-4. Incident or issue escalation workflows
+
 
