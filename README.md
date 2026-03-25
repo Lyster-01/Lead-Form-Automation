@@ -9,15 +9,11 @@ Below is the assignment of the workflow.
 
 ⚡ The lead form Workflow
 
-![Lead Form Workflow](leadform.png)
-
 This workflow is a selective alert pipeline. It doesn’t just react; it decides what deserves attention.
-
 It starts with “On form submission,” where each new entry triggers the workflow automatically.
+Instead of processing every submission blindly,  a Filter node was introduced to enforce logic. Only qualified data is allowed to move forward.Once the data passes the filter, a Gmail alert is triggered.
 
-Instead of processing every submission blindly, I introduced a Filter node to enforce logic. Only qualified data is allowed to move forward.
-
-Once the data passes the filter, a Gmail alert is triggered.
+![Lead Form Workflow](leadform.png)
 
 ### Purpose of workflow 
 1. Send real-time alerts for important submissions
