@@ -1,4 +1,5 @@
 # Lead-Form-Automation
+Below is the assignment of the workflow. 
 1. Create a new workflow.
 2. Add a trigger to capture form submission 
 3. Use the filter node to only allow budgets above 100,000.
