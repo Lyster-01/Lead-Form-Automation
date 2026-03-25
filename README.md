@@ -6,7 +6,7 @@
 5. Test the workflow with the high and low budget.
  
 ⚡ The lead form Workflow
-
+![Lead Form Workflow](leadform.png)
 
 This workflow is a selective alert pipeline. It doesn’t just react; it decides what deserves attention.
 
