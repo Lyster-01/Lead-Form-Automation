@@ -1,0 +1,137 @@
+{
+  "name": "Lead Form Automation",
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "Lead Form",
+        "formDescription": "Thank you for reaching out. Please fill in the form below.",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "What is your full name?",
+              "placeholder": "Jane Doe",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "What is your email?",
+              "fieldType": "email",
+              "placeholder": "name@gmail.com",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "What is your budget?",
+              "fieldType": "number",
+              "placeholder": "100000",
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.5,
+      "position": [
+        -256,
+        -128
+      ],
+      "id": "81183eeb-29e6-472a-a6e8-e2f4f62509f9",
+      "name": "On form submission",
+      "webhookId": "a519cff2-7825-4e3d-bcf9-1983ee37475f"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "38d5ce9e-09e7-406e-8537-153e6a58aa64",
+              "leftValue": "={{ $json['What is your budget?'] }}",
+              "rightValue": 100000,
+              "operator": {
+                "type": "number",
+                "operation": "gte"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.3,
+      "position": [
+        -16,
+        0
+      ],
+      "id": "cb937966-f12a-4ce6-948c-be668ab2ef11",
+      "name": "Filter"
+    },
+    {
+      "parameters": {
+        "sendTo": "lysterkm@gmail.com",
+        "subject": "=A new lead from {{ $json['What is your full name?'] }}",
+        "message": "=Hi Kwamboka, This lead {{ $json['What is your full name?'] }} has a budget of {{ $json['What is your budget?'] }} . Please feel free to reach out to them at {{ $json['What is your email?'] }}",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.2,
+      "position": [
+        240,
+        -96
+      ],
+      "id": "b39653e2-dd68-47f9-a787-074f319b2c28",
+      "name": "Send a message",
+      "webhookId": "2e2385b5-5880-4fd0-aaf1-a4bfeeac1d6b",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "MInIoTDpq9UzIhYl",
+          "name": "Gmail account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        [
+          {
+            "node": "Send a message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "9ec0a947-a77e-4507-9294-bd7ba28c3525",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "b19b2666f0186c1b9469a37c465c9758b4118a6b7c948721b8fdb43fce3ad9fd"
+  },
+  "id": "PYb0ocsGRr7HimY8",
+  "tags": []
+}
